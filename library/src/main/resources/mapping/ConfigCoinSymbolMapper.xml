@@ -1,0 +1,736 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.kingmao.library.dao.ConfigCoinSymbolMapper" >
+  <resultMap id="BaseResultMap" type="com.kingmao.library.entity.ConfigCoinSymbol" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="coin_symbol" property="coinSymbol" jdbcType="VARCHAR" />
+    <result column="contract_address" property="contractAddress" jdbcType="VARCHAR" />
+    <result column="contract_precision" property="contractPrecision" jdbcType="INTEGER" />
+    <result column="show_precision" property="showPrecision" jdbcType="INTEGER" />
+    <result column="otc_open" property="otcOpen" jdbcType="TINYINT" />
+    <result column="is_fiat" property="isFiat" jdbcType="TINYINT" />
+    <result column="is_quote" property="isQuote" jdbcType="TINYINT" />
+    <result column="is_open" property="isOpen" jdbcType="TINYINT" />
+    <result column="deposit_open" property="depositOpen" jdbcType="TINYINT" />
+    <result column="withdraw_open" property="withdrawOpen" jdbcType="TINYINT" />
+    <result column="use_rate" property="useRate" jdbcType="TINYINT" />
+    <result column="token_base" property="tokenBase" jdbcType="VARCHAR" />
+    <result column="chain_address" property="chainAddress" jdbcType="VARCHAR" />
+    <result column="chain_tx" property="chainTx" jdbcType="VARCHAR" />
+    <result column="deposit_confirm" property="depositConfirm" jdbcType="INTEGER" />
+    <result column="mining_deposit_confirm" property="miningDepositConfirm" jdbcType="INTEGER" />
+    <result column="withdraw_max" property="withdrawMax" jdbcType="DECIMAL" />
+    <result column="withdraw_min" property="withdrawMin" jdbcType="DECIMAL" />
+    <result column="withdraw_max_day" property="withdrawMaxDay" jdbcType="DECIMAL" />
+    <result column="withdraw_max_day_no_auth" property="withdrawMaxDayNoAuth" jdbcType="DECIMAL" />
+    <result column="address_len" property="addressLen" jdbcType="INTEGER" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="icon" property="icon" jdbcType="VARCHAR" />
+    <result column="link" property="link" jdbcType="VARCHAR" />
+    <result column="sort" property="sort" jdbcType="INTEGER" />
+    <result column="release_status" property="releaseStatus" jdbcType="TINYINT" />
+    <result column="ctime" property="ctime" jdbcType="TIMESTAMP" />
+    <result column="mtime" property="mtime" jdbcType="TIMESTAMP" />
+    <result column="btc_rate_math" property="btcRateMath" jdbcType="VARCHAR" />
+    <result column="is_release" property="isRelease" jdbcType="TINYINT" />
+    <result column="is_free" property="isFree" jdbcType="TINYINT" />
+    <result column="deposit_min" property="depositMin" jdbcType="DECIMAL" />
+    <result column="security_status" property="securityStatus" jdbcType="TINYINT" />
+    <result column="security_grade" property="securityGrade" jdbcType="TINYINT" />
+    <result column="tag_type" property="tagType" jdbcType="TINYINT" />
+    <result column="support_token" property="supportToken" jdbcType="TINYINT" />
+    <result column="regular" property="regular" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, coin_symbol, contract_address, contract_precision, show_precision, otc_open, 
+    is_fiat, is_quote, is_open, deposit_open, withdraw_open, use_rate, token_base, chain_address, 
+    chain_tx, deposit_confirm, mining_deposit_confirm, withdraw_max, withdraw_min, withdraw_max_day, 
+    withdraw_max_day_no_auth, address_len, name, icon, link, sort, release_status, ctime, 
+    mtime, btc_rate_math, is_release, is_free, deposit_min, security_status, security_grade, 
+    tag_type, support_token, regular
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.kingmao.library.entity.ConfigCoinSymbolExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from config_coin_symbol
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+    <if test="limitStart != null and limitStart>=0" >
+      limit #{limitStart} , #{limitEnd}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from config_coin_symbol
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from config_coin_symbol
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.kingmao.library.entity.ConfigCoinSymbolExample" >
+    delete from config_coin_symbol
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.kingmao.library.entity.ConfigCoinSymbol" >
+    insert into config_coin_symbol (id, coin_symbol, contract_address, 
+      contract_precision, show_precision, otc_open, 
+      is_fiat, is_quote, is_open, 
+      deposit_open, withdraw_open, use_rate, 
+      token_base, chain_address, chain_tx, 
+      deposit_confirm, mining_deposit_confirm, withdraw_max, 
+      withdraw_min, withdraw_max_day, withdraw_max_day_no_auth, 
+      address_len, name, icon, 
+      link, sort, release_status, 
+      ctime, mtime, btc_rate_math, 
+      is_release, is_free, deposit_min, 
+      security_status, security_grade, tag_type, 
+      support_token, regular)
+    values (#{id,jdbcType=INTEGER}, #{coinSymbol,jdbcType=VARCHAR}, #{contractAddress,jdbcType=VARCHAR}, 
+      #{contractPrecision,jdbcType=INTEGER}, #{showPrecision,jdbcType=INTEGER}, #{otcOpen,jdbcType=TINYINT}, 
+      #{isFiat,jdbcType=TINYINT}, #{isQuote,jdbcType=TINYINT}, #{isOpen,jdbcType=TINYINT}, 
+      #{depositOpen,jdbcType=TINYINT}, #{withdrawOpen,jdbcType=TINYINT}, #{useRate,jdbcType=TINYINT}, 
+      #{tokenBase,jdbcType=VARCHAR}, #{chainAddress,jdbcType=VARCHAR}, #{chainTx,jdbcType=VARCHAR}, 
+      #{depositConfirm,jdbcType=INTEGER}, #{miningDepositConfirm,jdbcType=INTEGER}, #{withdrawMax,jdbcType=DECIMAL}, 
+      #{withdrawMin,jdbcType=DECIMAL}, #{withdrawMaxDay,jdbcType=DECIMAL}, #{withdrawMaxDayNoAuth,jdbcType=DECIMAL}, 
+      #{addressLen,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{icon,jdbcType=VARCHAR}, 
+      #{link,jdbcType=VARCHAR}, #{sort,jdbcType=INTEGER}, #{releaseStatus,jdbcType=TINYINT}, 
+      #{ctime,jdbcType=TIMESTAMP}, #{mtime,jdbcType=TIMESTAMP}, #{btcRateMath,jdbcType=VARCHAR}, 
+      #{isRelease,jdbcType=TINYINT}, #{isFree,jdbcType=TINYINT}, #{depositMin,jdbcType=DECIMAL}, 
+      #{securityStatus,jdbcType=TINYINT}, #{securityGrade,jdbcType=TINYINT}, #{tagType,jdbcType=TINYINT}, 
+      #{supportToken,jdbcType=TINYINT}, #{regular,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.kingmao.library.entity.ConfigCoinSymbol" >
+    insert into config_coin_symbol
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="coinSymbol != null" >
+        coin_symbol,
+      </if>
+      <if test="contractAddress != null" >
+        contract_address,
+      </if>
+      <if test="contractPrecision != null" >
+        contract_precision,
+      </if>
+      <if test="showPrecision != null" >
+        show_precision,
+      </if>
+      <if test="otcOpen != null" >
+        otc_open,
+      </if>
+      <if test="isFiat != null" >
+        is_fiat,
+      </if>
+      <if test="isQuote != null" >
+        is_quote,
+      </if>
+      <if test="isOpen != null" >
+        is_open,
+      </if>
+      <if test="depositOpen != null" >
+        deposit_open,
+      </if>
+      <if test="withdrawOpen != null" >
+        withdraw_open,
+      </if>
+      <if test="useRate != null" >
+        use_rate,
+      </if>
+      <if test="tokenBase != null" >
+        token_base,
+      </if>
+      <if test="chainAddress != null" >
+        chain_address,
+      </if>
+      <if test="chainTx != null" >
+        chain_tx,
+      </if>
+      <if test="depositConfirm != null" >
+        deposit_confirm,
+      </if>
+      <if test="miningDepositConfirm != null" >
+        mining_deposit_confirm,
+      </if>
+      <if test="withdrawMax != null" >
+        withdraw_max,
+      </if>
+      <if test="withdrawMin != null" >
+        withdraw_min,
+      </if>
+      <if test="withdrawMaxDay != null" >
+        withdraw_max_day,
+      </if>
+      <if test="withdrawMaxDayNoAuth != null" >
+        withdraw_max_day_no_auth,
+      </if>
+      <if test="addressLen != null" >
+        address_len,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="icon != null" >
+        icon,
+      </if>
+      <if test="link != null" >
+        link,
+      </if>
+      <if test="sort != null" >
+        sort,
+      </if>
+      <if test="releaseStatus != null" >
+        release_status,
+      </if>
+      <if test="ctime != null" >
+        ctime,
+      </if>
+      <if test="mtime != null" >
+        mtime,
+      </if>
+      <if test="btcRateMath != null" >
+        btc_rate_math,
+      </if>
+      <if test="isRelease != null" >
+        is_release,
+      </if>
+      <if test="isFree != null" >
+        is_free,
+      </if>
+      <if test="depositMin != null" >
+        deposit_min,
+      </if>
+      <if test="securityStatus != null" >
+        security_status,
+      </if>
+      <if test="securityGrade != null" >
+        security_grade,
+      </if>
+      <if test="tagType != null" >
+        tag_type,
+      </if>
+      <if test="supportToken != null" >
+        support_token,
+      </if>
+      <if test="regular != null" >
+        regular,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="coinSymbol != null" >
+        #{coinSymbol,jdbcType=VARCHAR},
+      </if>
+      <if test="contractAddress != null" >
+        #{contractAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="contractPrecision != null" >
+        #{contractPrecision,jdbcType=INTEGER},
+      </if>
+      <if test="showPrecision != null" >
+        #{showPrecision,jdbcType=INTEGER},
+      </if>
+      <if test="otcOpen != null" >
+        #{otcOpen,jdbcType=TINYINT},
+      </if>
+      <if test="isFiat != null" >
+        #{isFiat,jdbcType=TINYINT},
+      </if>
+      <if test="isQuote != null" >
+        #{isQuote,jdbcType=TINYINT},
+      </if>
+      <if test="isOpen != null" >
+        #{isOpen,jdbcType=TINYINT},
+      </if>
+      <if test="depositOpen != null" >
+        #{depositOpen,jdbcType=TINYINT},
+      </if>
+      <if test="withdrawOpen != null" >
+        #{withdrawOpen,jdbcType=TINYINT},
+      </if>
+      <if test="useRate != null" >
+        #{useRate,jdbcType=TINYINT},
+      </if>
+      <if test="tokenBase != null" >
+        #{tokenBase,jdbcType=VARCHAR},
+      </if>
+      <if test="chainAddress != null" >
+        #{chainAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="chainTx != null" >
+        #{chainTx,jdbcType=VARCHAR},
+      </if>
+      <if test="depositConfirm != null" >
+        #{depositConfirm,jdbcType=INTEGER},
+      </if>
+      <if test="miningDepositConfirm != null" >
+        #{miningDepositConfirm,jdbcType=INTEGER},
+      </if>
+      <if test="withdrawMax != null" >
+        #{withdrawMax,jdbcType=DECIMAL},
+      </if>
+      <if test="withdrawMin != null" >
+        #{withdrawMin,jdbcType=DECIMAL},
+      </if>
+      <if test="withdrawMaxDay != null" >
+        #{withdrawMaxDay,jdbcType=DECIMAL},
+      </if>
+      <if test="withdrawMaxDayNoAuth != null" >
+        #{withdrawMaxDayNoAuth,jdbcType=DECIMAL},
+      </if>
+      <if test="addressLen != null" >
+        #{addressLen,jdbcType=INTEGER},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="icon != null" >
+        #{icon,jdbcType=VARCHAR},
+      </if>
+      <if test="link != null" >
+        #{link,jdbcType=VARCHAR},
+      </if>
+      <if test="sort != null" >
+        #{sort,jdbcType=INTEGER},
+      </if>
+      <if test="releaseStatus != null" >
+        #{releaseStatus,jdbcType=TINYINT},
+      </if>
+      <if test="ctime != null" >
+        #{ctime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="mtime != null" >
+        #{mtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="btcRateMath != null" >
+        #{btcRateMath,jdbcType=VARCHAR},
+      </if>
+      <if test="isRelease != null" >
+        #{isRelease,jdbcType=TINYINT},
+      </if>
+      <if test="isFree != null" >
+        #{isFree,jdbcType=TINYINT},
+      </if>
+      <if test="depositMin != null" >
+        #{depositMin,jdbcType=DECIMAL},
+      </if>
+      <if test="securityStatus != null" >
+        #{securityStatus,jdbcType=TINYINT},
+      </if>
+      <if test="securityGrade != null" >
+        #{securityGrade,jdbcType=TINYINT},
+      </if>
+      <if test="tagType != null" >
+        #{tagType,jdbcType=TINYINT},
+      </if>
+      <if test="supportToken != null" >
+        #{supportToken,jdbcType=TINYINT},
+      </if>
+      <if test="regular != null" >
+        #{regular,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.kingmao.library.entity.ConfigCoinSymbolExample" resultType="java.lang.Integer" >
+    select count(*) from config_coin_symbol
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update config_coin_symbol
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.coinSymbol != null" >
+        coin_symbol = #{record.coinSymbol,jdbcType=VARCHAR},
+      </if>
+      <if test="record.contractAddress != null" >
+        contract_address = #{record.contractAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="record.contractPrecision != null" >
+        contract_precision = #{record.contractPrecision,jdbcType=INTEGER},
+      </if>
+      <if test="record.showPrecision != null" >
+        show_precision = #{record.showPrecision,jdbcType=INTEGER},
+      </if>
+      <if test="record.otcOpen != null" >
+        otc_open = #{record.otcOpen,jdbcType=TINYINT},
+      </if>
+      <if test="record.isFiat != null" >
+        is_fiat = #{record.isFiat,jdbcType=TINYINT},
+      </if>
+      <if test="record.isQuote != null" >
+        is_quote = #{record.isQuote,jdbcType=TINYINT},
+      </if>
+      <if test="record.isOpen != null" >
+        is_open = #{record.isOpen,jdbcType=TINYINT},
+      </if>
+      <if test="record.depositOpen != null" >
+        deposit_open = #{record.depositOpen,jdbcType=TINYINT},
+      </if>
+      <if test="record.withdrawOpen != null" >
+        withdraw_open = #{record.withdrawOpen,jdbcType=TINYINT},
+      </if>
+      <if test="record.useRate != null" >
+        use_rate = #{record.useRate,jdbcType=TINYINT},
+      </if>
+      <if test="record.tokenBase != null" >
+        token_base = #{record.tokenBase,jdbcType=VARCHAR},
+      </if>
+      <if test="record.chainAddress != null" >
+        chain_address = #{record.chainAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="record.chainTx != null" >
+        chain_tx = #{record.chainTx,jdbcType=VARCHAR},
+      </if>
+      <if test="record.depositConfirm != null" >
+        deposit_confirm = #{record.depositConfirm,jdbcType=INTEGER},
+      </if>
+      <if test="record.miningDepositConfirm != null" >
+        mining_deposit_confirm = #{record.miningDepositConfirm,jdbcType=INTEGER},
+      </if>
+      <if test="record.withdrawMax != null" >
+        withdraw_max = #{record.withdrawMax,jdbcType=DECIMAL},
+      </if>
+      <if test="record.withdrawMin != null" >
+        withdraw_min = #{record.withdrawMin,jdbcType=DECIMAL},
+      </if>
+      <if test="record.withdrawMaxDay != null" >
+        withdraw_max_day = #{record.withdrawMaxDay,jdbcType=DECIMAL},
+      </if>
+      <if test="record.withdrawMaxDayNoAuth != null" >
+        withdraw_max_day_no_auth = #{record.withdrawMaxDayNoAuth,jdbcType=DECIMAL},
+      </if>
+      <if test="record.addressLen != null" >
+        address_len = #{record.addressLen,jdbcType=INTEGER},
+      </if>
+      <if test="record.name != null" >
+        name = #{record.name,jdbcType=VARCHAR},
+      </if>
+      <if test="record.icon != null" >
+        icon = #{record.icon,jdbcType=VARCHAR},
+      </if>
+      <if test="record.link != null" >
+        link = #{record.link,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sort != null" >
+        sort = #{record.sort,jdbcType=INTEGER},
+      </if>
+      <if test="record.releaseStatus != null" >
+        release_status = #{record.releaseStatus,jdbcType=TINYINT},
+      </if>
+      <if test="record.ctime != null" >
+        ctime = #{record.ctime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.mtime != null" >
+        mtime = #{record.mtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.btcRateMath != null" >
+        btc_rate_math = #{record.btcRateMath,jdbcType=VARCHAR},
+      </if>
+      <if test="record.isRelease != null" >
+        is_release = #{record.isRelease,jdbcType=TINYINT},
+      </if>
+      <if test="record.isFree != null" >
+        is_free = #{record.isFree,jdbcType=TINYINT},
+      </if>
+      <if test="record.depositMin != null" >
+        deposit_min = #{record.depositMin,jdbcType=DECIMAL},
+      </if>
+      <if test="record.securityStatus != null" >
+        security_status = #{record.securityStatus,jdbcType=TINYINT},
+      </if>
+      <if test="record.securityGrade != null" >
+        security_grade = #{record.securityGrade,jdbcType=TINYINT},
+      </if>
+      <if test="record.tagType != null" >
+        tag_type = #{record.tagType,jdbcType=TINYINT},
+      </if>
+      <if test="record.supportToken != null" >
+        support_token = #{record.supportToken,jdbcType=TINYINT},
+      </if>
+      <if test="record.regular != null" >
+        regular = #{record.regular,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update config_coin_symbol
+    set id = #{record.id,jdbcType=INTEGER},
+      coin_symbol = #{record.coinSymbol,jdbcType=VARCHAR},
+      contract_address = #{record.contractAddress,jdbcType=VARCHAR},
+      contract_precision = #{record.contractPrecision,jdbcType=INTEGER},
+      show_precision = #{record.showPrecision,jdbcType=INTEGER},
+      otc_open = #{record.otcOpen,jdbcType=TINYINT},
+      is_fiat = #{record.isFiat,jdbcType=TINYINT},
+      is_quote = #{record.isQuote,jdbcType=TINYINT},
+      is_open = #{record.isOpen,jdbcType=TINYINT},
+      deposit_open = #{record.depositOpen,jdbcType=TINYINT},
+      withdraw_open = #{record.withdrawOpen,jdbcType=TINYINT},
+      use_rate = #{record.useRate,jdbcType=TINYINT},
+      token_base = #{record.tokenBase,jdbcType=VARCHAR},
+      chain_address = #{record.chainAddress,jdbcType=VARCHAR},
+      chain_tx = #{record.chainTx,jdbcType=VARCHAR},
+      deposit_confirm = #{record.depositConfirm,jdbcType=INTEGER},
+      mining_deposit_confirm = #{record.miningDepositConfirm,jdbcType=INTEGER},
+      withdraw_max = #{record.withdrawMax,jdbcType=DECIMAL},
+      withdraw_min = #{record.withdrawMin,jdbcType=DECIMAL},
+      withdraw_max_day = #{record.withdrawMaxDay,jdbcType=DECIMAL},
+      withdraw_max_day_no_auth = #{record.withdrawMaxDayNoAuth,jdbcType=DECIMAL},
+      address_len = #{record.addressLen,jdbcType=INTEGER},
+      name = #{record.name,jdbcType=VARCHAR},
+      icon = #{record.icon,jdbcType=VARCHAR},
+      link = #{record.link,jdbcType=VARCHAR},
+      sort = #{record.sort,jdbcType=INTEGER},
+      release_status = #{record.releaseStatus,jdbcType=TINYINT},
+      ctime = #{record.ctime,jdbcType=TIMESTAMP},
+      mtime = #{record.mtime,jdbcType=TIMESTAMP},
+      btc_rate_math = #{record.btcRateMath,jdbcType=VARCHAR},
+      is_release = #{record.isRelease,jdbcType=TINYINT},
+      is_free = #{record.isFree,jdbcType=TINYINT},
+      deposit_min = #{record.depositMin,jdbcType=DECIMAL},
+      security_status = #{record.securityStatus,jdbcType=TINYINT},
+      security_grade = #{record.securityGrade,jdbcType=TINYINT},
+      tag_type = #{record.tagType,jdbcType=TINYINT},
+      support_token = #{record.supportToken,jdbcType=TINYINT},
+      regular = #{record.regular,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.kingmao.library.entity.ConfigCoinSymbol" >
+    update config_coin_symbol
+    <set >
+      <if test="coinSymbol != null" >
+        coin_symbol = #{coinSymbol,jdbcType=VARCHAR},
+      </if>
+      <if test="contractAddress != null" >
+        contract_address = #{contractAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="contractPrecision != null" >
+        contract_precision = #{contractPrecision,jdbcType=INTEGER},
+      </if>
+      <if test="showPrecision != null" >
+        show_precision = #{showPrecision,jdbcType=INTEGER},
+      </if>
+      <if test="otcOpen != null" >
+        otc_open = #{otcOpen,jdbcType=TINYINT},
+      </if>
+      <if test="isFiat != null" >
+        is_fiat = #{isFiat,jdbcType=TINYINT},
+      </if>
+      <if test="isQuote != null" >
+        is_quote = #{isQuote,jdbcType=TINYINT},
+      </if>
+      <if test="isOpen != null" >
+        is_open = #{isOpen,jdbcType=TINYINT},
+      </if>
+      <if test="depositOpen != null" >
+        deposit_open = #{depositOpen,jdbcType=TINYINT},
+      </if>
+      <if test="withdrawOpen != null" >
+        withdraw_open = #{withdrawOpen,jdbcType=TINYINT},
+      </if>
+      <if test="useRate != null" >
+        use_rate = #{useRate,jdbcType=TINYINT},
+      </if>
+      <if test="tokenBase != null" >
+        token_base = #{tokenBase,jdbcType=VARCHAR},
+      </if>
+      <if test="chainAddress != null" >
+        chain_address = #{chainAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="chainTx != null" >
+        chain_tx = #{chainTx,jdbcType=VARCHAR},
+      </if>
+      <if test="depositConfirm != null" >
+        deposit_confirm = #{depositConfirm,jdbcType=INTEGER},
+      </if>
+      <if test="miningDepositConfirm != null" >
+        mining_deposit_confirm = #{miningDepositConfirm,jdbcType=INTEGER},
+      </if>
+      <if test="withdrawMax != null" >
+        withdraw_max = #{withdrawMax,jdbcType=DECIMAL},
+      </if>
+      <if test="withdrawMin != null" >
+        withdraw_min = #{withdrawMin,jdbcType=DECIMAL},
+      </if>
+      <if test="withdrawMaxDay != null" >
+        withdraw_max_day = #{withdrawMaxDay,jdbcType=DECIMAL},
+      </if>
+      <if test="withdrawMaxDayNoAuth != null" >
+        withdraw_max_day_no_auth = #{withdrawMaxDayNoAuth,jdbcType=DECIMAL},
+      </if>
+      <if test="addressLen != null" >
+        address_len = #{addressLen,jdbcType=INTEGER},
+      </if>
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="icon != null" >
+        icon = #{icon,jdbcType=VARCHAR},
+      </if>
+      <if test="link != null" >
+        link = #{link,jdbcType=VARCHAR},
+      </if>
+      <if test="sort != null" >
+        sort = #{sort,jdbcType=INTEGER},
+      </if>
+      <if test="releaseStatus != null" >
+        release_status = #{releaseStatus,jdbcType=TINYINT},
+      </if>
+      <if test="ctime != null" >
+        ctime = #{ctime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="mtime != null" >
+        mtime = #{mtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="btcRateMath != null" >
+        btc_rate_math = #{btcRateMath,jdbcType=VARCHAR},
+      </if>
+      <if test="isRelease != null" >
+        is_release = #{isRelease,jdbcType=TINYINT},
+      </if>
+      <if test="isFree != null" >
+        is_free = #{isFree,jdbcType=TINYINT},
+      </if>
+      <if test="depositMin != null" >
+        deposit_min = #{depositMin,jdbcType=DECIMAL},
+      </if>
+      <if test="securityStatus != null" >
+        security_status = #{securityStatus,jdbcType=TINYINT},
+      </if>
+      <if test="securityGrade != null" >
+        security_grade = #{securityGrade,jdbcType=TINYINT},
+      </if>
+      <if test="tagType != null" >
+        tag_type = #{tagType,jdbcType=TINYINT},
+      </if>
+      <if test="supportToken != null" >
+        support_token = #{supportToken,jdbcType=TINYINT},
+      </if>
+      <if test="regular != null" >
+        regular = #{regular,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.kingmao.library.entity.ConfigCoinSymbol" >
+    update config_coin_symbol
+    set coin_symbol = #{coinSymbol,jdbcType=VARCHAR},
+      contract_address = #{contractAddress,jdbcType=VARCHAR},
+      contract_precision = #{contractPrecision,jdbcType=INTEGER},
+      show_precision = #{showPrecision,jdbcType=INTEGER},
+      otc_open = #{otcOpen,jdbcType=TINYINT},
+      is_fiat = #{isFiat,jdbcType=TINYINT},
+      is_quote = #{isQuote,jdbcType=TINYINT},
+      is_open = #{isOpen,jdbcType=TINYINT},
+      deposit_open = #{depositOpen,jdbcType=TINYINT},
+      withdraw_open = #{withdrawOpen,jdbcType=TINYINT},
+      use_rate = #{useRate,jdbcType=TINYINT},
+      token_base = #{tokenBase,jdbcType=VARCHAR},
+      chain_address = #{chainAddress,jdbcType=VARCHAR},
+      chain_tx = #{chainTx,jdbcType=VARCHAR},
+      deposit_confirm = #{depositConfirm,jdbcType=INTEGER},
+      mining_deposit_confirm = #{miningDepositConfirm,jdbcType=INTEGER},
+      withdraw_max = #{withdrawMax,jdbcType=DECIMAL},
+      withdraw_min = #{withdrawMin,jdbcType=DECIMAL},
+      withdraw_max_day = #{withdrawMaxDay,jdbcType=DECIMAL},
+      withdraw_max_day_no_auth = #{withdrawMaxDayNoAuth,jdbcType=DECIMAL},
+      address_len = #{addressLen,jdbcType=INTEGER},
+      name = #{name,jdbcType=VARCHAR},
+      icon = #{icon,jdbcType=VARCHAR},
+      link = #{link,jdbcType=VARCHAR},
+      sort = #{sort,jdbcType=INTEGER},
+      release_status = #{releaseStatus,jdbcType=TINYINT},
+      ctime = #{ctime,jdbcType=TIMESTAMP},
+      mtime = #{mtime,jdbcType=TIMESTAMP},
+      btc_rate_math = #{btcRateMath,jdbcType=VARCHAR},
+      is_release = #{isRelease,jdbcType=TINYINT},
+      is_free = #{isFree,jdbcType=TINYINT},
+      deposit_min = #{depositMin,jdbcType=DECIMAL},
+      security_status = #{securityStatus,jdbcType=TINYINT},
+      security_grade = #{securityGrade,jdbcType=TINYINT},
+      tag_type = #{tagType,jdbcType=TINYINT},
+      support_token = #{supportToken,jdbcType=TINYINT},
+      regular = #{regular,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
