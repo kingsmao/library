@@ -33,8 +33,19 @@ public class LamdbaExample_Runnable {
         // 2.2使用 lambda expression
         Runnable race2 = () -> System.out.println("Hello world !");
 
+        Runnable race3 = () -> {
+            System.out.println("Hello world !");
+        };
+
         // 直接调用 run 方法(没开新线程哦!)
         race1.run();
         race2.run();
+
+        Thread t1 = new Thread(race1);
+        t1.start();
+        Thread t2 = new Thread(race2);
+        t2.start();
+        Thread t3 = new Thread(race3);
+        t3.start();
     }
 }
