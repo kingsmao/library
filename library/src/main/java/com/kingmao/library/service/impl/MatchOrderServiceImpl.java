@@ -18,4 +18,9 @@ public class MatchOrderServiceImpl implements MatchOrderService {
     public int insert(MatchOrder matchOrder) {
         return matchOrderMapper.insertSelective(matchOrder);
     }
+
+    @Override
+    public int insertSelective(MatchOrder matchOrder) {
+        return matchOrderMapper.insertSelective(matchOrder);
+    }
 }

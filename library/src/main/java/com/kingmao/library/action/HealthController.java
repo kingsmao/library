@@ -18,20 +18,29 @@ public class HealthController {
     private MatchOrderService matchOrderService;
 
     @RequestMapping(value = "/createOrder")
-    public void createOrder(){
+    public void createOrder() {
         MatchOrder matchOrder = new MatchOrder();
-        matchOrder.setOrderType((byte)1);
+        matchOrder.setOrderType((byte) 1);
         matchOrder.setPrice(generateRandomBigDecimalNum());
         matchOrder.setVolume(generateRandomBigDecimalNum());
         matchOrderService.insert(matchOrder);
     }
 
-    public static BigDecimal generateRandomBigDecimalNum(){
+    public static BigDecimal generateRandomBigDecimalNum() {
         float minF = new BigDecimal(1).floatValue();
         float maxF = new BigDecimal(100).floatValue();
         //生成随机数
         BigDecimal db = new BigDecimal(Math.random() * (maxF - minF) + minF);
         //返回保留两位小数的随机数。不进行四舍五入
-        return db.setScale(2,BigDecimal.ROUND_DOWN);
+        return db.setScale(2, BigDecimal.ROUND_DOWN);
+    }
+
+    @RequestMapping(value = "/common")
+    public void health() throws InterruptedException {
+        while (true) {
+            System.out.println("common线程的名字为：" + Thread.currentThread().getName());
+            Thread.sleep(2000);
+
+        }
     }
 }

@@ -8,4 +8,6 @@ import com.kingmao.library.entity.MatchOrder;
  */
 public interface MatchOrderService {
     int insert(MatchOrder matchOrder);
+
+    int insertSelective(MatchOrder matchOrder);
 }
