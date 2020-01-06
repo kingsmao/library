@@ -26,7 +26,7 @@ public class SystemConfig {
               logger.warn("WARN系统当前时间：" + new SimpleDateFormat("yy-MM-dd HH:mm:ss").format(new Date()));
               logger.error("ERROR系统当前时间：" + new SimpleDateFormat("yy-MM-dd HH:mm:ss").format(new Date()));
               try {
-                  Thread.sleep(2000);
+                  Thread.sleep(1000 * 60);
               } catch (InterruptedException e) {
                   e.printStackTrace();
               }
