@@ -9,10 +9,11 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.kingmao.library</groupId>
-    <artifactId>library</artifactId>
+    <artifactId>mycat</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>library</name>
     <packaging>war</packaging>
+    <name>mycat</name>
+    <description>Demo project for Spring Boot</description>
 
     <properties>
         <java.version>1.8</java.version>
@@ -51,13 +52,6 @@
         </dependency>
         <!--日志 end-->
 
-        <!--Gson start-->
-        <dependency>
-            <groupId>com.google.code.gson</groupId>
-            <artifactId>gson</artifactId>
-        </dependency>
-        <!--Gson end-->
-
         <!--Mysql-Mybatis start-->
         <dependency>
             <groupId>org.mybatis.spring.boot</groupId>
@@ -75,26 +69,7 @@
         </dependency>
         <!--Mysql-Mybatis end-->
 
-        <!--使用Example时需要引入此包 start -->
-        <dependency>
-            <groupId>org.springframework.data</groupId>
-            <artifactId>spring-data-commons</artifactId>
-            <version>2.2.1.RELEASE</version>
-        </dependency>
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <!--使用Example时需要引入此包 end -->
-
-        <!--事务工具类中需要连接池-->
-        <dependency>
-            <groupId>com.alibaba</groupId>
-            <artifactId>druid</artifactId>
-            <version>1.1.16</version>
-        </dependency>
-
+        <!--StringUtil之类的工具包-->
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
@@ -102,8 +77,6 @@
     </dependencies>
 
     <build>
-        <!--打war包后的项目名称-->
-        <finalName>library</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>

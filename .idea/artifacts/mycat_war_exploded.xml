@@ -1,17 +1,17 @@
 <component name="ArtifactManager">
-  <artifact type="exploded-war" name="library:war exploded">
-    <output-path>$PROJECT_DIR$/library/target/library</output-path>
+  <artifact type="exploded-war" name="mycat:war exploded">
+    <output-path>$PROJECT_DIR$/mycat/target/mycat-0.0.1-SNAPSHOT</output-path>
     <properties id="maven-jee-properties">
       <options>
         <exploded>true</exploded>
-        <module>library</module>
+        <module>mycat</module>
         <packaging>war</packaging>
       </options>
     </properties>
     <root id="root">
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">
-          <element id="module-output" name="library" />
+          <element id="module-output" name="mycat" />
         </element>
         <element id="directory" name="lib">
           <element id="library" level="project" name="Maven: org.springframework.boot:spring-boot-starter-web:2.2.2.RELEASE" />
@@ -50,7 +50,6 @@
           <element id="library" level="project" name="Maven: org.slf4j:slf4j-api:1.7.29" />
           <element id="library" level="project" name="Maven: ch.qos.logback:logback-core:1.2.3" />
           <element id="library" level="project" name="Maven: ch.qos.logback:logback-classic:1.2.3" />
-          <element id="library" level="project" name="Maven: com.google.code.gson:gson:2.8.6" />
           <element id="library" level="project" name="Maven: org.mybatis.spring.boot:mybatis-spring-boot-starter:1.3.2" />
           <element id="library" level="project" name="Maven: org.springframework.boot:spring-boot-starter-jdbc:2.2.2.RELEASE" />
           <element id="library" level="project" name="Maven: com.zaxxer:HikariCP:3.4.1" />
@@ -61,15 +60,13 @@
           <element id="library" level="project" name="Maven: org.springframework:spring-jdbc:5.2.2.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-beans:5.2.2.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-tx:5.2.2.RELEASE" />
-          <element id="library" level="project" name="Maven: org.springframework.data:spring-data-commons:2.2.1.RELEASE" />
-          <element id="library" level="project" name="Maven: com.alibaba:druid:1.1.16" />
           <element id="library" level="project" name="Maven: org.apache.commons:commons-lang3:3.9" />
         </element>
       </element>
       <element id="directory" name="META-INF">
-        <element id="file-copy" path="$PROJECT_DIR$/library/target/library/META-INF/MANIFEST.MF" />
+        <element id="file-copy" path="$PROJECT_DIR$/mycat/target/mycat-0.0.1-SNAPSHOT/META-INF/MANIFEST.MF" />
       </element>
-      <element id="javaee-facet-resources" facet="library/web/Web" />
+      <element id="javaee-facet-resources" facet="mycat/web/Web" />
     </root>
   </artifact>
 </component>
