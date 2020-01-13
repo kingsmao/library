@@ -2,27 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0307092c-c21e-4ef9-bb6f-9dc57de6df7b" name="Default Changelist" comment="init logbak">
-      <change afterPath="$PROJECT_DIR$/.idea/artifacts/mycat_war.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/artifacts/mycat_war_exploded.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_alibaba_druid_1_1_16.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_commons_commons_lang3_3_9.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mycat/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mycat/GeneratorMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mycat/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mycat/src/main/java/com/kingmao/library/MycatApplication.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mycat/src/main/java/com/kingmao/library/dao/MatchOrderMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mycat/src/main/java/com/kingmao/library/entity/MatchOrder.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mycat/src/main/resources/application.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mycat/src/main/resources/mapping/MatchOrderMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mycat/src/test/java/com/kingmao/library/MycatApplicationTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/library_war_exploded.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/library_war_exploded.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/library/library.iml" beforeDir="false" afterPath="$PROJECT_DIR$/library/library.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/library/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/library/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/library/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/library/target/classes/application.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/library/target/classes/com/kingmao/library/action/HealthController.class" beforeDir="false" afterPath="$PROJECT_DIR$/library/target/classes/com/kingmao/library/action/HealthController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/library/target/classes/com/kingmao/library/service/MatchOrderService.class" beforeDir="false" afterPath="$PROJECT_DIR$/library/target/classes/com/kingmao/library/service/MatchOrderService.class" afterDir="false" />
@@ -231,7 +211,7 @@
       <workItem from="1578050762031" duration="278000" />
       <workItem from="1578278689206" duration="34000" />
       <workItem from="1578278744272" duration="21063000" />
-      <workItem from="1578449948145" duration="1262000" />
+      <workItem from="1578449948145" duration="3482000" />
     </task>
     <task id="LOCAL-00001" summary="init redis">
       <created>1577788384940</created>
@@ -275,7 +255,14 @@
       <option name="project" value="LOCAL" />
       <updated>1578302129681</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="init mycat">
+      <created>1578451267676</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1578451267676</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -302,6 +289,7 @@
     <MESSAGE value="添加队列实例" />
     <MESSAGE value="init logbak" />
     <MESSAGE value="init mybatis interceptor" />
-    <option name="LAST_COMMIT_MESSAGE" value="init mybatis interceptor" />
+    <MESSAGE value="init mycat" />
+    <option name="LAST_COMMIT_MESSAGE" value="init mycat" />
   </component>
 </project>
