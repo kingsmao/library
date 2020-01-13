@@ -61,7 +61,16 @@ public class LambdaExample_filter {
         coinTempList = openCoinList.stream().filter(otcFilterOpen).filter(withdrewFilterClose).sorted(sortById).collect(Collectors.toList());
         System.out.println(new Gson().toJson(openCoinList));
         System.out.println(new Gson().toJson(coinTempList));
+    }
 
-
+    public static void t3(){
+        Integer defalut = 10;
+        //获取所有开放的币种
+        List<ConfigCoinSymbol> allOpenCoinList = null;
+        //筛选ETH代币
+        Predicate<ConfigCoinSymbol> ethFilter = (p -> p.getTokenBase().equalsIgnoreCase("ETH"));
+        //id（时间）倒序
+        Comparator<ConfigCoinSymbol> idFilter = ((v1, v2) -> (v2.getId() - v1.getId()));
+        List<ConfigCoinSymbol> retList = allOpenCoinList.stream().filter(ethFilter).sorted(idFilter).limit(defalut).collect(Collectors.toList());
     }
 }
