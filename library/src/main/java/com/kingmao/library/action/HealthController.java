@@ -1,13 +1,14 @@
 package com.kingmao.library.action;
 
 import com.kingmao.library.entity.MatchOrder;
-import com.kingmao.library.entity.MatchOrderExample;
 import com.kingmao.library.service.MatchOrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author qinxuan
@@ -45,9 +46,11 @@ public class HealthController {
     @RequestMapping(value = "/common")
     public void health() throws InterruptedException {
         while (true) {
-            System.out.println("common线程的名字为：" + Thread.currentThread().getName());
+            System.out.println("common线程的名字为sssss：" + Thread.currentThread().getName());
             Thread.sleep(2000);
-
         }
+
+        //package com.google.common.collect
+        //List<String> fees = Lists.newArrayList(); == List<String> fees = new ArrayList<String>();
     }
 }

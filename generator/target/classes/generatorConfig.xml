@@ -58,7 +58,7 @@
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
         <!--改这里-->
-        <table tableName="fee_pooling">
+        <table tableName="saas_fee_divide_fix">
             <!-- <generatedKey column="id" sqlStatement="MySql" identity="true"/> -->
         </table>
     </context>
