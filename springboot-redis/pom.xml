@@ -51,25 +51,35 @@
         </dependency>
         <!--日志 end-->
 
-        <!--redis-->
+        <!-- spring-boot集成redis -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
+            <!-- 排除redis默认客户端lettuce -->
+            <exclusions>
+                <exclusion>
+                    <groupId>io.lettuce</groupId>
+                    <artifactId>lettuce-core</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <!--使用jedis连接redis-->
         <dependency>
             <groupId>redis.clients</groupId>
             <artifactId>jedis</artifactId>
         </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <scope>test</scope>
+        </dependency>
 
-        <!--        &lt;!&ndash;redis start&ndash;&gt;-->
-<!--        <dependency>-->
-<!--            <groupId>redis.clients</groupId>-->
-<!--            <artifactId>jedis</artifactId>-->
-<!--        </dependency>-->
-<!--        &lt;!&ndash;redis end&ndash;&gt;-->
-<!--        &lt;!&ndash;redis cluster start&ndash;&gt;-->
-<!--        <dependency>-->
-<!--            <groupId>com.moilioncircle</groupId>-->
-<!--            <artifactId>redis-replicator</artifactId>-->
-<!--            <version>3.3.1</version>-->
-<!--        </dependency>-->
-<!--        &lt;!&ndash;redis cluster end&ndash;&gt;-->
+        <!--redis集群-->
+        <!--<dependency>
+            <groupId>com.moilioncircle</groupId>
+            <artifactId>redis-replicator</artifactId>
+            <version>3.3.1</version>
+        </dependency>-->
     </dependencies>
 
     <build>
