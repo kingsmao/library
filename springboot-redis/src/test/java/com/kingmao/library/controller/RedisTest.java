@@ -19,6 +19,10 @@ public class RedisTest {
 
     @Test
     public void t1(){
-        redisUtil.set("1q","2w");
+        redisUtil.set("士大夫立刻就","五分13二");
+        redisUtil.set("个人465 二","3个人");
+        redisUtil.set("二个人豆腐干地方","dfgdfg");
+        redisUtil.set("风格和法闰土","儿童424多少");
+        redisUtil.set("35 人","er3二");
     }
 }

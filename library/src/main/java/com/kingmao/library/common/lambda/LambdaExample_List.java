@@ -39,7 +39,7 @@ public class LambdaExample_List {
         list.add(c3);
         list.add(c4);
         //System.out.println(new Gson().toJson(list));
-        t3(list);
+        t2(list);
     }
 
     /**
@@ -52,7 +52,7 @@ public class LambdaExample_List {
      * @param list
      */
     public static void t1(List<ConfigCoinSymbol> list){
-        List<String> strings = list.stream().map(e -> e.getCoinSymbol()).collect(Collectors.toList());
+        List<String> strings = list.stream().map(ConfigCoinSymbol::getCoinSymbol).collect(Collectors.toList());
         System.out.println(strings);
     }
 
@@ -65,7 +65,7 @@ public class LambdaExample_List {
      * @param list
      */
     public static void t2(List<ConfigCoinSymbol> list){
-        String str = list.stream().map(e -> e.getCoinSymbol()).collect(Collectors.joining(","));
+        String str = list.stream().map(ConfigCoinSymbol::getCoinSymbol).collect(Collectors.joining(","));
         System.out.println(str);
     }
 
